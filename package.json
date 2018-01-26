@@ -8,6 +8,6 @@
   },
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager ."
+    "build": "electron-packager . --icon icon"
   }
 }
