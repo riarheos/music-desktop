@@ -1,10 +1,8 @@
-const { app, BrowserWindow, globalShortcut, webContents } = require('electron');
+const { app, BrowserWindow, globalShortcut } = require('electron');
 const path = require('path');
 
-let mainWindow = null;
-
 app.on('ready', function() {
-    mainWindow = new BrowserWindow({
+    const mainWindow = new BrowserWindow({
         width: 1024,
         height: 768,
         title: 'Yandex.Music',
