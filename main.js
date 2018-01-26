@@ -8,7 +8,7 @@ app.on('ready', function(){
         width: 1024,
         height: 768,
         title: 'Yandex.Music',
-        icon: path.join(__dirname, "icon.png.hqx"),
+        icon: path.join(__dirname, "icon.png"),
         webPreferences: {
             nodeIntegration: false,
             preload: path.join(__dirname, 'preload.js'),
