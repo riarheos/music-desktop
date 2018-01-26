@@ -1,13 +1,13 @@
 {
   "name": "music-desktop",
   "main": "main.js",
-  "version": "1.0",
+  "version": "1.0.1",
   "dependencies": {
     "electron": "^1.7.11",
     "electron-packager": "^10.1.1"
   },
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . --icon icon"
+    "build": "electron-packager . YandexMusic --icon icon"
   }
 }
