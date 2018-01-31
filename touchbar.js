@@ -48,11 +48,26 @@ function embedTouchBar(mainWindow) {
         }
     });
 
+    const repeatIcon = [
+        nativeImage.createFromPath('repeat_white.png'),
+        nativeImage.createFromPath('repeat_black.png'),
+        nativeImage.createFromPath('repeat_1.png'),
+    ];
+    const repeatButton = new TouchBarButton({
+        icon: repeatIcon[0],
+        click: () => {
+            mainWindow.webContents.send('repeat');
+        }
+    });
+
     // bind to events
     ipcMain.on('controls', (evt, controls) => {
         prevButton.icon = prevIcon[ controls.prev ? 0 : 1 ];
         nextButton.icon = nextIcon[ controls.next ? 0 : 1 ];
         shuffleButton.icon = shuffleIcon[ controls.shuffle ? 0 : 1 ];
+        repeatButton.icon = repeatIcon[ controls.repeat === 1
+                                        ? 2
+                                        : controls.repeat ? 0 : 1 ];
     });
 
     ipcMain.on('track', (evt, track) => {
@@ -73,6 +88,7 @@ function embedTouchBar(mainWindow) {
         nextButton,
         new TouchBarSpacer({size: 'small'}),
         shuffleButton,
+        repeatButton,
     ]));
 }
 

@@ -16,6 +16,10 @@ ipcRenderer.on('shuffle', function(evt, args) {
     externalAPI.toggleShuffle();
 });
 
+ipcRenderer.on('repeat', function(evt, args) {
+    externalAPI.toggleRepeat();
+});
+
 function sendControls() {
     ipcRenderer.send('controls', externalAPI.getControls());
 }
