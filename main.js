@@ -1,7 +1,7 @@
+const path = require('path');
 const { app,
         BrowserWindow,
         globalShortcut } = require('electron');
-const path = require('path');
 const { embedTouchBar } = require('./touchbar.js');
 
 app.on('ready', function() {
