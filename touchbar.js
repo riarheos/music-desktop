@@ -1,4 +1,4 @@
-const { TouchBar, nativeImage, ipcMain } = require('electron');
+const { TouchBar, nativeImage, ipcMain, Notification } = require('electron');
 const { TouchBarLabel,
         TouchBarButton,
         TouchBarSpacer } = TouchBar;
@@ -11,6 +11,8 @@ function templateImage(name) {
 }
 
 function embedTouchBar(mainWindow) {
+    let playing = false;
+
     // create the buttons
     const prevIcon = templateImage('NSTouchBarSkipBackTemplate');
     const prevButton = new TouchBarButton({
@@ -71,6 +73,15 @@ function embedTouchBar(mainWindow) {
     });
 
     ipcMain.on('track', (evt, track) => {
+        if (!track) return;
+        if (!playing) return;
+
+        const n = new Notification({
+            title: track.title,
+            subtitle: track.artists[0].title,
+            silent: true,
+        });
+        n.show()
     });
 
     ipcMain.on('state', (evt, state) => {
@@ -79,6 +90,7 @@ function embedTouchBar(mainWindow) {
         } else {
             playButton.icon = playIcon[0];
         }
+        playing = state;
     });
 
     // set the bar
