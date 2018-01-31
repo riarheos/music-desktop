@@ -1,5 +1,8 @@
-const { app, BrowserWindow, globalShortcut } = require('electron');
+const { app,
+        BrowserWindow,
+        globalShortcut } = require('electron');
 const path = require('path');
+const { embedTouchBar } = require('./touchbar.js');
 
 app.on('ready', function() {
     const mainWindow = new BrowserWindow({
@@ -18,6 +21,7 @@ app.on('ready', function() {
     });
 
     mainWindow.loadURL('https://music.yandex.ru');
+    embedTouchBar(mainWindow);
 
     globalShortcut.register('mediaplaypause', function() {
         mainWindow.webContents.send('playpause');

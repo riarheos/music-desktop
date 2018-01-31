@@ -11,3 +11,32 @@ ipcRenderer.on('next', function(evt, args) {
 ipcRenderer.on('prev', function(evt, args) {
     externalAPI.prev();
 });
+
+ipcRenderer.on('shuffle', function(evt, args) {
+    externalAPI.toggleShuffle();
+});
+
+function sendControls() {
+    ipcRenderer.send('controls', externalAPI.getControls());
+}
+
+function sendTrack() {
+    ipcRenderer.send('track', externalAPI.getCurrentTrack());
+}
+
+function sendState() {
+    ipcRenderer.send('state', externalAPI.isPlaying());
+}
+
+function sendAll() {
+    sendControls();
+    sendTrack();
+    sendState();
+}
+
+window.onload = () => {
+    externalAPI.on(externalAPI.EVENT_CONTROLS, sendControls);
+    externalAPI.on(externalAPI.EVENT_TRACK, sendTrack);
+    externalAPI.on(externalAPI.EVENT_STATE, sendState);
+    externalAPI.on(externalAPI.EVENT_READY, sendAll);
+};
