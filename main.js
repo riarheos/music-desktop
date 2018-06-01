@@ -1,4 +1,6 @@
 const path = require('path');
+const tray = require('./tray');
+
 const { app,
         BrowserWindow,
         globalShortcut } = require('electron');
@@ -19,6 +21,8 @@ app.on('ready', function() {
     mainWindow.on('closed', function() {
         app.quit();
     });
+
+	tray.create(mainWindow);
 
     mainWindow.loadURL('https://music.yandex.ru');
     embedTouchBar(mainWindow);
