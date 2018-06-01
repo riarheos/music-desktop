@@ -62,6 +62,8 @@ exports.create = win => {
 	tray.on('click', toggleWin);
 
 	electron.ipcMain.on('track', function (e, track) {
-		tray.setToolTip('Playing ' + track.title + ' ' + track.artists[0].title);
+		if (track) {
+			tray.setToolTip('Playing ' + track.title + ' ' + track.artists[0].title);
+		}
 	})
 };

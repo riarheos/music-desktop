@@ -38,4 +38,16 @@ app.on('ready', function() {
     globalShortcut.register('mediaprevioustrack', function() {
         mainWindow.webContents.send('prev');
     });
+
+	globalShortcut.register('Super+Alt+Right', () => {
+		mainWindow.webContents.send('next');
+	});
+
+	globalShortcut.register('Super+Alt+Left', () => {
+		mainWindow.webContents.send('prev');
+	});
+
+	globalShortcut.register('Super+Alt+Space', () => {
+		mainWindow.webContents.send('playpause');
+	});
 });
