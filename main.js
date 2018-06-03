@@ -14,7 +14,7 @@ app.on('ready', function() {
         height: 768,
         title: 'Yandex.Music',
         autoHideMenuBar: hideMenuBar,
-        icon: path.join(__dirname, 'icon.png'),
+        icon: path.join(app.getAppPath(), 'static/icon.png'),
         webPreferences: {
             nodeIntegration: false,
             preload: path.join(__dirname, 'preload.js'),
