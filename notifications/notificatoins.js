@@ -16,8 +16,11 @@ function showNotifications() {
         const n = new Notification({
             title: track.title,
             icon: icon,
-            body: track.artists[0].title,
-            subtitle: track.artists[0].title,
+            if (process.platform === 'darwin') {
+                subtitle: track.artists[0].title,
+            } else {
+                body: track.artists[0].title,
+            }
             silent: true,
         });
         n.show();
