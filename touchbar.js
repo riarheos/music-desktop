@@ -1,5 +1,5 @@
 const path = require('path');
-const { TouchBar, nativeImage, ipcMain, Notification } = require('electron');
+const { app, TouchBar, nativeImage, ipcMain, Notification } = require('electron');
 const { TouchBarLabel,
         TouchBarButton,
         TouchBarSpacer } = TouchBar;
@@ -41,8 +41,8 @@ function embedTouchBar(mainWindow) {
     });
 
     const shuffleIcon = [
-        nativeImage.createFromPath(path.join(__dirname, 'shuffle_white.png')),
-        nativeImage.createFromPath(path.join(__dirname, 'shuffle_black.png')),
+        nativeImage.createFromPath(path.join(app.getAppPath(), 'static/shuffle_white.png')),
+        nativeImage.createFromPath(path.join(__dirname, 'static/shuffle_black.png')),
     ];
     const shuffleButton = new TouchBarButton({
         icon: shuffleIcon[0],
@@ -52,9 +52,9 @@ function embedTouchBar(mainWindow) {
     });
 
     const repeatIcon = [
-        nativeImage.createFromPath(path.join(__dirname, 'repeat_white.png')),
-        nativeImage.createFromPath(path.join(__dirname, 'repeat_black.png')),
-        nativeImage.createFromPath(path.join(__dirname, 'repeat_1.png')),
+        nativeImage.createFromPath(path.join(app.getAppPath(), 'static/repeat_white.png')),
+        nativeImage.createFromPath(path.join(app.getAppPath(), 'static/repeat_black.png')),
+        nativeImage.createFromPath(path.join(app.getAppPath(), 'static/repeat_1.png')),
     ];
     const repeatButton = new TouchBarButton({
         icon: repeatIcon[0],
