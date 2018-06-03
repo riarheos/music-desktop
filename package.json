@@ -9,9 +9,9 @@
   },
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . YandexMusic --icon icon",
-    "build:osx": "electron-packager . YandexMusic --icon icon --platform darwin",
-    "build:win": "electron-packager . YandexMusic --icon icon --platform win32",
-    "build:lin": "electron-packager . YandexMusic --icon icon --platform linux"
+    "build": "electron-packager . YandexMusic --icon static/icon",
+    "build:osx": "electron-packager . YandexMusic --icon static/icon --platform darwin",
+    "build:win": "electron-packager . YandexMusic --icon static/icon --platform win32",
+    "build:lin": "electron-packager . YandexMusic --icon static/icon --platform linux"
   }
 }
