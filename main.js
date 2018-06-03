@@ -4,6 +4,7 @@ const { app,
         globalShortcut } = require('electron');
 const { embedTouchBar } = require('./touchbar.js');
 const config = require('./config/config.js');
+const { showNotifications } = require('./notifications/notificatoins.js');
 
 
 app.on('ready', function() {
@@ -26,7 +27,12 @@ app.on('ready', function() {
     });
 
     mainWindow.loadURL('https://music.yandex.ru');
-    embedTouchBar(mainWindow);
+
+    showNotifications();
+
+    if (process.platform === 'darwin') {
+        embedTouchBar(mainWindow);
+    }
 
     globalShortcut.register('mediaplaypause', function() {
         mainWindow.webContents.send('playpause');
