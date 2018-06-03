@@ -16,13 +16,15 @@ function showNotifications() {
         const n = new Notification({
             title: track.title,
             icon: icon,
-            if (process.platform === 'darwin') {
-                subtitle: track.artists[0].title,
-            } else {
-                body: track.artists[0].title,
-            }
             silent: true,
         });
+
+        if (process.platform === 'darwin') {
+            n.subtitle = track.artists[0].title
+        } else {
+            n.body = track.artists[0].title
+        };
+
         n.show();
     });
 
