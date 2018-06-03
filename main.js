@@ -9,6 +9,7 @@ app.on('ready', function() {
         width: 1024,
         height: 768,
         title: 'Yandex.Music',
+        autoHideMenuBar: true,
         icon: path.join(__dirname, 'icon.png'),
         webPreferences: {
             nodeIntegration: false,
