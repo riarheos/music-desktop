@@ -1,17 +1,16 @@
-const {Menu, getCurrentWindow} = require('electron');
-const electron = require('electron');
+const {Menu, getCurrentWindow, electron} = require('electron');
 const app = electron.app;
 const config = require('../config/config.js');
 
 function checkIfHidden() {
-    hideMenuBar = config.get('hideMenuBar', false)
-    return hideMenuBar
+    hideMenuBar = config.get('hideMenuBar', false);
+    return hideMenuBar;
 }
 
 function toggleHidden(isHidden) {
-        config.set("hideMenuBar", isHidden ? false : true)
-        app.relaunch()
-        app.exit()
+    config.set("hideMenuBar", isHidden ? false : true);
+    app.relaunch();
+    app.exit();
 }
 
 const template = [
