@@ -1,17 +1,16 @@
-const {Menu, getCurrentWindow} = require('electron');
-const electron = require('electron');
+const { Menu, getCurrentWindow, electron } = require('electron');
 const app = electron.app;
 const config = require('../config/config.js');
 
 function checkIfHidden() {
-    hideMenuBar = config.get('hideMenuBar', false)
-    return hideMenuBar
+    hideMenuBar = config.get('hideMenuBar', false);
+    return hideMenuBar;
 }
 
 function toggleHidden(isHidden) {
-        config.set("hideMenuBar", isHidden ? false : true)
-        app.relaunch()
-        app.exit()
+    config.set("hideMenuBar", isHidden ? false : true);
+    app.relaunch();
+    app.exit();
 }
 
 const template = [
@@ -60,14 +59,14 @@ const template = [
         label: 'Settings',
         submenu: [
             {
-            label: 'Autohide Menu Bar',
-            type: 'checkbox',
-            checked: checkIfHidden(),
-                click () {
+                label: 'Autohide Menu Bar',
+                type: 'checkbox',
+                checked: checkIfHidden(),
+                click() {
                     toggleHidden(checkIfHidden());
                 }
 
-        }
+            }
         ]
 
     },
@@ -77,14 +76,14 @@ const template = [
             {
                 label: 'Reload',
                 accelerator: 'CmdOrCtrl+R',
-                click (item, focusedWindow) {
+                click(item, focusedWindow) {
                     if (focusedWindow) focusedWindow.reload()
                 }
             },
             {
                 label: 'Toggle Developer Tools',
                 accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
-                click (item, focusedWindow) {
+                click(item, focusedWindow) {
                     if (focusedWindow) focusedWindow.webContents.toggleDevTools()
                 }
             },
@@ -124,7 +123,7 @@ const template = [
         submenu: [
             {
                 label: 'Learn More',
-                click () { require('electron').shell.openExternal('http://electron.atom.io') }
+                click() { require('electron').shell.openExternal('http://electron.atom.io') }
             }
         ]
     }
