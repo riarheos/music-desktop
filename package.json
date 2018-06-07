@@ -1,17 +1,17 @@
 {
-  "name": "music-desktop",
+  "name": "Yandex.Music",
   "main": "main.js",
   "version": "1.0.1",
   "dependencies": {
-    "electron": "^1.8.2-beta.4",
+    "electron": "^2.0.2",
     "electron-config": "^1.0.0",
-    "electron-packager": "^10.1.2"
+    "electron-packager": "^12.1.0"
   },
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . YandexMusic --icon icon",
-    "build:osx": "electron-packager . YandexMusic --icon icon --platform darwin",
-    "build:win": "electron-packager . YandexMusic --icon icon --platform win32",
-    "build:lin": "electron-packager . YandexMusic --icon icon --platform linux"
+    "build": "electron-packager . YandexMusic --icon static/icon",
+    "build:osx": "electron-packager . YandexMusic --icon static/icon --platform darwin",
+    "build:win": "electron-packager . YandexMusic --icon static/icon --platform win32",
+    "build:lin": "electron-packager . YandexMusic --icon static/icon --platform linux"
   }
 }
