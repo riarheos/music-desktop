@@ -5,7 +5,7 @@
   "dependencies": {
     "electron": "^2.0.2",
     "electron-config": "^1.0.0",
-    "electron-packager": "^10.1.2"
+    "electron-packager": "^12.1.0"
   },
   "scripts": {
     "start": "electron .",
