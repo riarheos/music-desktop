@@ -42,7 +42,7 @@ function embedTouchBar(mainWindow) {
 
     const shuffleIcon = [
         nativeImage.createFromPath(path.join(app.getAppPath(), 'static/shuffle_white.png')),
-        nativeImage.createFromPath(path.join(__dirname, 'static/shuffle_black.png')),
+        nativeImage.createFromPath(path.join(app.getAppPath(), 'static/shuffle_black.png')),
     ];
     const shuffleButton = new TouchBarButton({
         icon: shuffleIcon[0],
