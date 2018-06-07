@@ -12,17 +12,17 @@ function showNotifications() {
         if (!track) return;
         if (!playing) return;
 
-        icon = nativeImage.createFromPath(path.join(app.getAppPath(), 'static/icon.png'))
+        icon = nativeImage.createFromPath(path.join(app.getAppPath(), 'static/icon.png'));
         const n = new Notification({
             title: track.title,
-            icon: icon,
             silent: true,
+            icon: process.platform === 'darwin' ? null : icon,
         });
 
         if (process.platform === 'darwin') {
-            n.subtitle = track.artists[0].title
+            n.subtitle = track.artists[0].title;
         } else {
-            n.body = track.artists[0].title
+            n.body = track.artists[0].title;
         };
 
         n.show();
@@ -30,4 +30,4 @@ function showNotifications() {
 
 }
 
-module.exports = { showNotifications }
+module.exports = { showNotifications };
