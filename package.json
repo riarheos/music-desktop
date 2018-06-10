@@ -15,6 +15,10 @@
     "build:osx": "electron-packager . YandexMusic --icon static/icon --platform darwin",
     "build:win": "electron-packager . YandexMusic --icon static/icon --platform win32",
     "build:lin": "electron-packager . YandexMusic --icon static/icon --platform linux",
-    "deb64": "electron-installer-debian --arch amd64 --config debian/config.json"
+    "deb64": "electron-installer-debian --arch amd64 --config debian/config.json",
+    "dmg": "electron-installer-dmg YandexMusic-darwin-x64/YandexMusic.app YandexMusic --out installers/"
+  },
+  "devDependencies": {
+    "electron-installer-dmg": "^1.0.0"
   }
 }
