@@ -80,6 +80,7 @@ function embedTouchBar(mainWindow) {
         const n = new Notification({
             title: track.title,
             subtitle: track.artists[0].title,
+			body: track.artists[0].title,
             silent: true,
         });
         n.show()
