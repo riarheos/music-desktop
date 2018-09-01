@@ -3,5 +3,6 @@
   "dest": "installers/",
   "icon": "static/icon.png",
   "name": "yandex-music",
-  "bin": "YandexMusic"
+  "bin": "YandexMusic",
+  "maintainer": "Stepan Ardalin <stepan@omasana.com>"
 }

@@ -2,7 +2,7 @@
   "name": "Yandex.Music",
   "description": "Yandex.Music in electron",
   "main": "main.js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "dependencies": {
     "electron": "^2.0.2",
     "electron-config": "^1.0.0",
@@ -11,6 +11,7 @@
   },
   "scripts": {
     "start": "electron .",
+    "start_tray": "electron tray/tray.js",
     "build": "electron-packager . YandexMusic --icon static/icon",
     "build:osx": "electron-packager . YandexMusic --icon static/icon --platform darwin",
     "build:win": "electron-packager . YandexMusic --icon static/icon --platform win32",

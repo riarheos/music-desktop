@@ -8,6 +8,28 @@ function showNotifications() {
         playing = state;
     });
 
+    ipcMain.on('like', (evt, track) => {
+        if (track.liked) {
+            icon = nativeImage.createFromPath(path.join(app.getAppPath(), 'static/yellow_heart.png'));
+        } else {
+            icon = nativeImage.createFromPath(path.join(app.getAppPath(), 'static/red_heart.png'));
+        }
+
+        const n = new Notification({
+            title: track.title,
+            silent: true,
+            icon: process.platform === 'darwin' ? null : icon,
+        });
+
+        if (process.platform === 'darwin') {
+            n.subtitle = track.artists[0].title;
+        } else {
+            n.body = track.artists[0].title;
+        };
+
+        n.show();
+    });
+
     ipcMain.on('track', (evt, track) => {
         if (!track) return;
         if (!playing) return;
