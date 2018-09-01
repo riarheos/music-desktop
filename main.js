@@ -5,6 +5,7 @@ const { app,
 const { embedTouchBar } = require('./touchbar.js');
 const config = require('./config/config.js');
 const { showNotifications } = require('./notifications/notificatoins.js');
+const { createTray } = require('./tray/tray.js')
 
 
 app.on('ready', function() {
@@ -12,6 +13,10 @@ app.on('ready', function() {
     const mainWindow = new BrowserWindow({
         width: 1024,
         height: 768,
+        skipTaskbar: true,
+        center: true,
+        show: false,
+        backgroundColor: '#2e2c29',
         title: 'Yandex.Music',
         autoHideMenuBar: hideMenuBar,
         icon: path.join(app.getAppPath(), 'static/icon.png'),
@@ -26,12 +31,20 @@ app.on('ready', function() {
         app.quit();
     });
 
+    mainWindow.once('ready-to-show', () => {
+        mainWindow.show();
+    });
+
     mainWindow.loadURL('https://music.yandex.ru');
 
     showNotifications();
 
     if (process.platform === 'darwin') {
         embedTouchBar(mainWindow);
+    }
+    
+    if (process.platform === 'linux') {
+        createTray(mainWindow);
     }
 
     globalShortcut.register('mediaplaypause', function() {

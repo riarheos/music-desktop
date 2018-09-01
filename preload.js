@@ -12,6 +12,11 @@ ipcRenderer.on('prev', function(evt, args) {
     externalAPI.prev();
 });
 
+ipcRenderer.on('like', function(evt, args) {
+    externalAPI.toggleLike();
+    ipcRenderer.send('like', externalAPI.getCurrentTrack())
+});
+
 ipcRenderer.on('shuffle', function(evt, args) {
     externalAPI.toggleShuffle();
 });
