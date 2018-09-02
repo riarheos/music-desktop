@@ -2,7 +2,7 @@
   "name": "Yandex.Music",
   "description": "Yandex.Music in electron",
   "main": "main.js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "dependencies": {
     "electron": "^2.0.2",
     "electron-config": "^1.0.0",
@@ -15,7 +15,7 @@
     "build": "electron-packager . YandexMusic --icon static/icon",
     "build:osx": "electron-packager . YandexMusic --icon static/icon --platform darwin",
     "build:win": "electron-packager . YandexMusic --icon static/icon --platform win32",
-    "build:lin": "electron-packager . YandexMusic --icon static/icon --platform linux",
+    "build:lin": "electron-packager . YandexMusic --icon static/icon --platform linux --overwrite",
     "deb64": "electron-installer-debian --arch amd64 --config debian/config.json",
     "dmg": "electron-installer-dmg YandexMusic-darwin-x64/YandexMusic.app YandexMusic --out installers/"
   },
