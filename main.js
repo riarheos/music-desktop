@@ -6,14 +6,25 @@ const { embedTouchBar } = require('./touchbar.js');
 const config = require('./config/config.js');
 const { showNotifications } = require('./notifications/notificatoins.js');
 const { createTray } = require('./tray/tray.js')
+let mainWindow = null;
 
 
-app.on('ready', function() {
+const isSecondInstance = app.makeSingleInstance(() => {
+    if (mainWindow) {
+        if (mainWindow.isMinimized()) mainWindow.restore()
+        mainWindow.focus()
+    }
+})
+
+if (isSecondInstance) {
+    app.quit()
+
+}
+app.on('ready', function () {
     const hideMenuBar = config.get("hideMenuBar", false);
-    const mainWindow = new BrowserWindow({
+    mainWindow = new BrowserWindow({
         width: 1024,
         height: 768,
-        skipTaskbar: true,
         center: true,
         show: false,
         backgroundColor: '#2e2c29',
@@ -33,19 +44,20 @@ app.on('ready', function() {
 
     mainWindow.once('ready-to-show', () => {
         mainWindow.show();
+
+        if (process.platform === 'darwin') {
+            embedTouchBar(mainWindow);
+        }
+
+        if (process.platform === 'linux') {
+            createTray(mainWindow);
+        }
     });
 
     mainWindow.loadURL('https://music.yandex.ru');
 
     showNotifications();
 
-    if (process.platform === 'darwin') {
-        embedTouchBar(mainWindow);
-    }
-    
-    if (process.platform === 'linux') {
-        createTray(mainWindow);
-    }
 
     globalShortcut.register('mediaplaypause', function() {
         mainWindow.webContents.send('playpause');
