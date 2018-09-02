@@ -11,7 +11,9 @@ let mainWindow = null;
 
 const isSecondInstance = app.makeSingleInstance(() => {
     if (mainWindow) {
-        if (mainWindow.isMinimized()) mainWindow.restore()
+        if (mainWindow.isMinimized()) {
+            mainWindow.restore()
+        }
         mainWindow.focus()
     }
 })
