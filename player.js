@@ -7,6 +7,8 @@ function createMprisPlayer(mainWindow) {
     const player = Player({
         name: 'yandexmusic',
         identity: 'Yandex Music',
+        canRaise: true,
+        canSetFullscreen: false,
         supportedInterfaces: ['player'],
     });
 
@@ -43,6 +45,10 @@ function createMprisPlayer(mainWindow) {
         };
         console.log(track.cover.replace("%%", "200x200"))
         player;
+    });
+
+    player.on('raise', function () {
+        mainWindow.show()
     });
 
     player.on('next', function () {
