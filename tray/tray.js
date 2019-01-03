@@ -6,15 +6,28 @@ const path = require('path');
 let tray = null;
 
 function createTray(mainWindow) {
-    const icon = nativeImage.createFromPath(path.join(app.getAppPath(), 'static/icon.png'));
-    const next = nativeImage.createFromPath(path.join(app.getAppPath(), 'static/next_track.png'));
-    const prev = nativeImage.createFromPath(path.join(app.getAppPath(), 'static/prev_track.png'));
-    const play = nativeImage.createFromPath(path.join(app.getAppPath(), 'static/play_track.png'));
-    const heart = nativeImage.createFromPath(path.join(app.getAppPath(), 'static/heart.png'));
+    const icon = nativeImage.createFromPath(
+        path.join(app.getAppPath(), 'static/icon.png')).resize({
+            height: 20
+        });
+    const next = nativeImage.createFromPath(
+        path.join(app.getAppPath(), 'static/next_track.png')).resize({
+            height: 20
+        });
+    const prev = nativeImage.createFromPath(
+        path.join(app.getAppPath(), 'static/prev_track.png')).resize({
+            height: 20
+        });
+    const play = nativeImage.createFromPath(
+        path.join(app.getAppPath(), 'static/play_track.png')).resize({
+            height: 20
+        });
+    const heart = nativeImage.createFromPath(
+        path.join(app.getAppPath(), 'static/heart.png')).resize({
+            height: 20
+        });
 
-    tray = new Tray(icon.resize({
-        height: 20,
-    }));
+    tray = new Tray(icon);
 
     const activate = e => {
         mainWindow.webContents.send(e);
