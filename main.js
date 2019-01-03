@@ -3,6 +3,7 @@ const { app,
         BrowserWindow,
         globalShortcut } = require('electron');
 const { embedTouchBar } = require('./touchbar.js');
+const { createMprisPlayer } = require('./player.js')
 const config = require('./config/config.js');
 const { showNotifications } = require('./notifications/notificatoins.js');
 const { createTray } = require('./tray/tray.js')
@@ -16,12 +17,12 @@ const isSecondInstance = app.makeSingleInstance(() => {
         }
         mainWindow.focus()
     }
-})
+});
 
 if (isSecondInstance) {
     app.quit()
-
 }
+
 app.on('ready', function () {
     const hideMenuBar = config.get("hideMenuBar", false);
     mainWindow = new BrowserWindow({
@@ -53,6 +54,7 @@ app.on('ready', function () {
 
         if (process.platform === 'linux') {
             createTray(mainWindow);
+            createMprisPlayer(mainWindow);
         }
     });
 
