@@ -2,12 +2,14 @@
   "name": "Yandex.Music",
   "description": "Yandex.Music in electron",
   "main": "main.js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "dependencies": {
     "electron": "^2.0.2",
     "electron-config": "^1.0.0",
     "electron-installer-debian": "^0.8.1",
-    "electron-packager": "^12.1.0"
+    "electron-packager": "^12.1.0",
+    "mpris-service": "^1.1.4",
+    "yarn": "^1.10.1"
   },
   "scripts": {
     "start": "electron .",
