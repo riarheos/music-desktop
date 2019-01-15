@@ -3,7 +3,9 @@ const { app,
         BrowserWindow,
         globalShortcut } = require('electron');
 const { embedTouchBar } = require('./touchbar.js');
-const { createMprisPlayer } = require('./player.js')
+if (process.platform === 'linux') {
+    const { createMprisPlayer } = require('./player.js');
+}
 const config = require('./config/config.js');
 const { showNotifications } = require('./notifications/notificatoins.js');
 const { createTray } = require('./tray/tray.js')

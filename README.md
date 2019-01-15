@@ -5,5 +5,5 @@ Firefox Quantum is great but it lacks media keys. Electron comes to the rescue!
 
 ## Installation
     git clone https://github.com/riarheos/music-desktop.git
-    npm install
-    npm build
+    yarn install
+    yarn build
