@@ -4,9 +4,12 @@
   "main": "main.js",
   "version": "1.0.4",
   "dependencies": {
+    "electron-config": "^2.0.0"
+  },
+  "devDependencies": {
     "electron": "^4.0.1",
-    "electron-config": "^2.0.0",
     "electron-installer-debian": "^1.1.0",
+    "electron-installer-dmg": "^1.0.0",
     "electron-packager": "^13.0.1",
     "yarn": "^1.10.1"
   },
@@ -16,14 +19,11 @@
   "scripts": {
     "start": "electron .",
     "start_tray": "electron tray/tray.js",
-    "build": "electron-packager . YandexMusic --icon static/icon",
-    "build:osx": "electron-packager . YandexMusic --icon static/icon --platform darwin",
-    "build:win": "electron-packager . YandexMusic --icon static/icon --platform win32",
+    "build": "electron-packager . YandexMusic --icon static/icon --overwrite",
+    "build:osx": "electron-packager . YandexMusic --icon static/icon --platform darwin --overwrite",
+    "build:win": "electron-packager . YandexMusic --icon static/icon --platform win32 --overwrite",
     "build:lin": "electron-packager . YandexMusic --icon static/icon --platform linux --overwrite",
     "deb64": "electron-installer-debian --arch amd64 --config debian/config.json",
     "dmg": "electron-installer-dmg YandexMusic-darwin-x64/YandexMusic.app YandexMusic --out installers/"
-  },
-  "devDependencies": {
-    "electron-installer-dmg": "^1.0.0"
   }
 }

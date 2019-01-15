@@ -12,7 +12,12 @@ const { createTray } = require('./tray/tray.js')
 let mainWindow = null;
 
 
-const isSecondInstance = app.makeSingleInstance(() => {
+const singleInstanceLock = app.requestSingleInstanceLock();
+if (!singleInstanceLock) {
+    app.quit();
+}
+
+app.on('second-instance', () => {
     if (mainWindow) {
         if (mainWindow.isMinimized()) {
             mainWindow.restore()
@@ -20,10 +25,6 @@ const isSecondInstance = app.makeSingleInstance(() => {
         mainWindow.focus()
     }
 });
-
-if (isSecondInstance) {
-    app.quit()
-}
 
 app.on('ready', function () {
     const hideMenuBar = config.get("hideMenuBar", false);
