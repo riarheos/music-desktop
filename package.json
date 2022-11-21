@@ -7,14 +7,14 @@
     "electron-config": "^2.0.0"
   },
   "devDependencies": {
-    "electron": "^4.0.1",
-    "electron-installer-debian": "^1.1.0",
-    "electron-installer-dmg": "^1.0.0",
-    "electron-packager": "^13.0.1",
-    "yarn": "^1.10.1"
+    "electron": "^21.2.2",
+    "electron-installer-debian": "^3.1.0",
+    "electron-installer-dmg": "^4.0.0",
+    "electron-packager": "^17.1.1",
+    "yarn": "^2.4.3"
   },
   "optionalDependencies": {
-    "mpris-service": "^1.1.4"
+    "mpris-service": "^2.1.2"
   },
   "scripts": {
     "start": "electron .",
